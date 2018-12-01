@@ -1,6 +1,6 @@
 <?php
 
-namespace SimpleSAML\Module\core;
+namespace SimpleSAML\Module\core\Controller;
 
 use SimpleSAML\Error\Exception;
 use SimpleSAML\HTTP\RunnableResponse;
@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @package SimpleSAML\Module\core
  */
-class Controller
+class LoginController
 {
 
     /** @var \SimpleSAML\Configuration */
