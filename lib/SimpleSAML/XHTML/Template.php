@@ -11,6 +11,7 @@ namespace SimpleSAML\XHTML;
 
 use JaimePerez\TwigConfigurableI18n\Twig\Environment as Twig_Environment;
 use JaimePerez\TwigConfigurableI18n\Twig\Extensions\Extension\I18n as Twig_Extensions_Extension_I18n;
+use SimpleSAML\Module;
 use Symfony\Component\HttpFoundation\Response;
 use SimpleSAML\Locale\Localization;
 
@@ -286,6 +287,11 @@ class Template extends Response
 
         $twig = new Twig_Environment($loader, $options);
         $twig->addExtension(new Twig_Extensions_Extension_I18n());
+
+        $twig->addFunction('moduleURL', new \Twig_SimpleFunction('moduleURL', function ($url, $params = []) {
+            return Module::getModuleURL($url, $params);
+        }));
+
 
         // initialize some basic context
         $langParam = $this->configuration->getString('language.parameter.name', 'language');
