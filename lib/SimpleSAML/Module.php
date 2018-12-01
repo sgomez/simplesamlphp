@@ -2,6 +2,7 @@
 
 namespace SimpleSAML;
 
+use SimpleSAML\Kernel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -166,9 +167,12 @@ class Module
 
         $config = Configuration::getInstance();
         if ($config->getBoolean('usenewui', false) === true) {
-            $router = new HTTP\Router($module);
             try {
-                return $router->process();
+                $kernel = new Kernel($module);
+                $response = $kernel->handle($request);
+                $kernel->terminate($request, $response);
+
+                return $response;
             } catch (\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException $e) {
                 // no routes configured for this module, fall back to the old system
             } catch (\Symfony\Component\HttpKernel\Exception\NotFoundHttpException $e) {
