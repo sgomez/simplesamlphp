@@ -1,0 +1,13 @@
+version: '3.3'
+services: 
+    ssp:
+        build: docker
+        container_name: ssp
+        ports:
+            - 80:80
+            - 443:443
+        volumes:
+            - type: bind
+              source: . 
+              target: /var/simplesamlphp
+
