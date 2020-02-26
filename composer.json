@@ -38,7 +38,7 @@
         "files": ["tests/_autoload_modules.php"]
     },
     "require": {
-        "php": ">=7.4 || ^8.0 ",
+        "php": ">=7.4 || ^8.0",
         "ext-SPL": "*",
         "ext-zlib": "*",
         "ext-pcre": "*",
@@ -53,17 +53,21 @@
         "simplesamlphp/assert": "^0.1.0",
         "simplesamlphp/saml2": "^4.1",
         "simplesamlphp/twig-configurable-i18n": "^2.3",
-        "symfony/cache": "^4.0 || ^5.0",
-        "symfony/config": "^4.0 || ^5.0",
-        "symfony/console": "^4.0 || ^5.0",
-        "symfony/dependency-injection": "^4.0 || ^5.0",
-        "symfony/finder": "^4.0 || ^5.0",
-        "symfony/framework-bundle": "^4.0 || ^5.0",
-        "symfony/http-foundation": "^4.0 || ^5.0",
-        "symfony/http-kernel": "^4.0 || ^5.0",
-        "symfony/routing": "^4.0 || ^5.0",
+        "symfony/asset": "^4.4 || ^5,0",
+        "symfony/cache": "^4.4 || ^5.0",
+        "symfony/config": "^4.4 || ^5.0",
+        "symfony/console": "^4.4 || ^5.0",
+        "symfony/dependency-injection": "^4.4 || ^5.0",
+        "symfony/finder": "^4.4 || ^5.0",
+        "symfony/framework-bundle": "^4.4 || ^5.0",
+        "symfony/http-foundation": "^4.4 || ^5.0",
+        "symfony/http-kernel": "^4.4 || ^5.0",
+        "symfony/routing": "^4.4 || ^5.0",
+        "symfony/translation": "^4.4 || ^5.0",
+        "symfony/twig-bridge": "^4.4 || ^5.0",
+        "symfony/twig-bundle": "^4.4 || ^5.0",
         "symfony/var-exporter": "^5.0",
-        "symfony/yaml": "^4.0 || ^5.0",
+        "symfony/yaml": "^4.4 || ^5.0",
         "twig/twig": "~2.0"
     },
     "require-dev": {
@@ -71,7 +75,10 @@
         "mikey179/vfsstream": "~1.6",
         "simplesamlphp/simplesamlphp-module-adfs": "dev-master",
         "simplesamlphp/simplesamlphp-test-framework": "^1.0.5",
-        "simplesamlphp/xml-security": "^0.0.10"
+        "simplesamlphp/xml-security": "^0.0.10",
+        "symfony/web-profiler-bundle": "^4.4 || ^5.0",
+        "symfony/stopwatch": "^4.4 || ^5,0",
+        "sgomez/simplesamlphp-module-expirycheck": "dev-master"
     },
     "suggest": {
         "predis/predis": "Needed if a Redis server is used to store session information",
@@ -86,5 +93,10 @@
     "support": {
         "issues": "https://github.com/simplesamlphp/simplesamlphp/issues",
         "source": "https://github.com/simplesamlphp/simplesamlphp"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "bin/console cache:clear"
+        ]
     }
 }
